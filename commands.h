@@ -39,11 +39,13 @@
 #define BMAG "\e[1;35m"
 #define BCYN "\e[1;36m"
 #define BWHT "\e[1;37m"
-
+void clear(){
+    system("clear");
+}
 void wc_lc_cc(char user_input[maxwords][64]){
     pid_t child = fork();
     if(child==0){
-        execlp("/home/viji/CLionProjects/untitled21/wc_lc_cc",user_input[0], user_input[1],user_input[2],user_input[3],user_input[4],user_input[5], NULL);
+        execlp("/home/viji/CLionProjects/untitled21/wc_lc_cc","/home/viji/CLionProjects/untitled21/wc_lc_cc",user_input[0], user_input[1],user_input[2],user_input[3],user_input[4],user_input[5], NULL);
     }else if(child<0){
         perror("child creation failed");
     }else{
@@ -54,6 +56,16 @@ void ls(char user_input[maxwords][64]){
     pid_t child = fork();
     if(child==0){
         execlp("/home/viji/CLionProjects/untitled21/ls",user_input[0], ".", NULL);
+    }else if(child<0){
+        perror("child creation failed");
+    }else{
+        wait(NULL);
+    }
+}
+void lsr(char user_input[maxwords][64]){
+    pid_t child = fork();
+    if(child==0){
+        execlp("/home/viji/CLionProjects/untitled21/lsr",user_input[0], ".", NULL);
     }else if(child<0){
         perror("child creation failed");
     }else{
@@ -134,6 +146,7 @@ void rm(char user_input[maxwords][64]){
         wait(NULL);
     }
 }
+
 #endif //UNTITLED21_COMMANDS_H
 #define maxwords 16
 
