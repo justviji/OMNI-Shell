@@ -42,23 +42,23 @@ void initPrint(){               //printing the name and the symbol of the shell 
            "          \"88bo         od88\" \n"
            "        d888888        8888888b\n\n"WHT,name.sysname,hostname,ver[0],ver[1],ver[2],ver[3]/*Kernel 0 Major 1 Minor 2 Patch 3*/, get_uptime()/60);
 }
-void newCommandPrint(int last_flag){
+void newCommandPrint(){
+    getc(stdout);
     char hostname[32];
     char username[32];
     gethostname(hostname,32);
     getlogin_r(username, 32);
-    printf(BLU"%s",username);
+    printf(BLU" %s",username);
     printf(WHT"@");
     printf(BBLU"%s",hostname);
     printf(WHT" in "BWHT);
     fflush(stdout);
     working_dir();
-    printf("\u03A9  ");
+    printf(" \u03A9  ");
 
 }
 void getString(char user_input[maxwords][64]){
-    fflush(stdin);
-    fflush(stdout);
+    getc(stdout);
     char buffer[64];
     fflush(stdin);
     for (int i = 0; i < maxwords; ++i) {
@@ -85,20 +85,17 @@ void getString(char user_input[maxwords][64]){
     }
 }
 
-
-
-
 int main() {
     //FILE * last_command = NULL;
     //last_command = fopen("history.txt", "a");
+    clear();
     initPrint();
     bool exit_flag = false;
     char user_input[maxwords][64] = {};
     cd("/home");
     while(exit_flag == false){
 
-        int i = -1;
-        newCommandPrint(0);
+        newCommandPrint();
         getString(user_input);
 
 
@@ -108,7 +105,7 @@ int main() {
             exit_flag = true;
         }else if(strcmp(user_input[0],"cd")==0){                ///change direcory
             chdir(user_input[1]);
-        } else if(strcmp(user_input[0],"ghost")==0&&strcmp("shell",user_input[3])==0){
+        } else if(strcmp(user_input[0],"ghost")==0){
             ghost_in_the_shell();
         }else if(strcmp(user_input[0],"pwd")==0){
             working_dir();
@@ -116,17 +113,20 @@ int main() {
             cd(user_input[1]);
         }else if(strcmp(user_input[0],"cc")==0||strcmp(user_input[0],"wc")==0||strcmp(user_input[0],"lc") == 0){
             wc_lc_cc(user_input);
-
         }else if(strcmp(user_input[0],"cat")==0){
             cat(user_input);
         }else if(strcmp(user_input[0],"ls")==0){
             ls(user_input);
+        }else if(strcmp(user_input[0],"lsal")==0){
+            lsr(user_input);
         }else if(strcmp(user_input[0],"mkdir")==0){
             mkdir(user_input);
         } else if(strcmp(user_input[0],"touch")==0){
             touch(user_input);
+        }else if(strcmp(user_input[0],"clear")==0) {
+            clear();
         }else if(strcmp(user_input[0],"rm")==0){
-            rm(user_input);
+                rm(user_input);
         }else{
             printf(BRED"Error: "WHT"command not found\n");
             fflush(stdout);

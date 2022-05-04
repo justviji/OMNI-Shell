@@ -7,6 +7,11 @@
 
 
 int main(int stuff, char ** userin) {
-    mkdir(userin[1], S_IRWXU);              ///S_IRWXU for read write and execute
-    exit(EXIT_SUCCESS);
+    if(mkdir(userin[1], S_IRWXU)==0){        ///S_IRWXU for read write and execute
+        exit(EXIT_SUCCESS);
+    }else{
+        perror("directory could not be created\n");
+        exit(EXIT_FAILURE);
+    }
+
 }

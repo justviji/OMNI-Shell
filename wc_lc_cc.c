@@ -12,10 +12,10 @@ int main(int counter, char * user_input[]) {
     int in_word = 0;
     FILE *fp;
 
-    fp = fopen(user_input[1], "r");
+    fp = fopen(user_input[2], "r");
 
     if(fp == NULL) {
-        printf("Could not find or open the file %s\n", user_input[1]);
+        printf("Could not find or open the file %s\n", user_input[2]);
         fclose(fp);
     }
 
@@ -34,9 +34,9 @@ int main(int counter, char * user_input[]) {
             in_word = 1;
         }
     }
-    if(strcmp(user_input[0],"cc")==0)
+    if(strcmp(user_input[1],"cc")==0)
     printf("Number of characters: %d.\n", char_count);
-    else if(strcmp(user_input[0],"wc")==0)
+    else if(strcmp(user_input[1],"wc")==0)
     printf("Number of words: %d.\n", word_count);
     else
     printf("Number of lines: %d.\n", line_count+1 );
