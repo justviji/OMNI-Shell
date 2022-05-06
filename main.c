@@ -51,10 +51,10 @@ void newCommandPrint(){
     printf(BLU" %s",username);
     printf(WHT"@");
     printf(BBLU"%s",hostname);
-    printf(WHT" in "BWHT);
+    printf(WHT" in "MAG);
     fflush(stdout);
     working_dir();
-    printf(" \u03A9  ");
+    printf(WHT" \u03A9  "WHT);
 
 }
 void getString(char user_input[maxwords][64]){
@@ -105,8 +105,6 @@ int main() {
             exit_flag = true;
         }else if(strcmp(user_input[0],"cd")==0){                ///change direcory
             chdir(user_input[1]);
-        } else if(strcmp(user_input[0],"ghost")==0){
-            ghost_in_the_shell();
         }else if(strcmp(user_input[0],"pwd")==0){
             working_dir();
         }else if(strcmp(user_input[0],"cd")==0){
