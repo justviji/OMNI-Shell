@@ -115,8 +115,8 @@ int main() {
             cat(user_input);
         }else if(strcmp(user_input[0],"ls")==0){
             ls(user_input);
-        }else if(strcmp(user_input[0],"lsal")==0){
-            lsr(user_input);
+        }else if(strcmp(user_input[0],"rmdir")==0){
+            rmDir(user_input);
         }else if(strcmp(user_input[0],"mkdir")==0){
             mkdir(user_input);
         } else if(strcmp(user_input[0],"touch")==0){

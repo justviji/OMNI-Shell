@@ -80,7 +80,18 @@ void echo(char user_input[maxwords][64]){
     if(child==0){
         execlp("/home/viji/CLionProjects/untitled21/echo",user_input[0], user_input[1],user_input[2],user_input[3],
                user_input[4],user_input[5],user_input[6],user_input[7],user_input[8],user_input[9],user_input[10],
-               user_input[11],user_input[12], NULL);
+               user_input[11],user_input[12], user_input[13],user_input[14], NULL);
+    }else if(child<0){
+        perror("child creation failed");
+    }else{
+        wait(NULL);
+    }
+}
+
+void rmDir(char user_input[maxwords][64]){
+    pid_t child = fork();
+    if(child==0){
+        execlp("/home/viji/CLionProjects/untitled21/rmdir",user_input[0], user_input[1], NULL);
     }else if(child<0){
         perror("child creation failed");
     }else{

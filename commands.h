@@ -65,7 +65,8 @@ void cat(char user_input[maxwords][64]);
 void touch(char user_input[maxwords][64]);
 // removes the file  with the given name
 void rm(char user_input[maxwords][64]);
-
+//removes a directory and its contents
+void rmDir(char user_input[maxwords][64]);
 
 #endif //UNTITLED21_COMMANDS_H
 #define maxwords 16
